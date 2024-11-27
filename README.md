@@ -4,11 +4,11 @@ support uploading and downloading of files to and from the server.
 
 ### Group Members ### 
 1. Moises Cerda
-                  
+   moi.cerda01@gmail.com               
 2. Vinh Nguyen
    vinhgod123@csu.fullerton.edu
 3. Ian Gabriel Vista
-   
+   vistaiangabriel@gmail.com
 4. Irena Nguyen
    irenanguyen@csu.fullerton.edu
 
