@@ -35,6 +35,14 @@ support uploading and downloading of files to and from the server.
      - ```quit``` : Exits the client. 
 
 ### Special Notes ###
-- Ensure the server and client directors are correctly set up:
-  - ```serv.py``` and ```cli.py``` should be in the same folder.
-  - The server direc
+- File Transfer:
+  - When using ```get``` command, files will be saved in the client's directory with a prefix ```downloaded_```.
+  - When using the ```put``` command, ensure the file exists in the client's directory.
+
+- Error Handling:
+  - If a file is not found on the server (using ```get``` or ```put```), the client will display: ```Error: File '<file>' not found on the client.```.
+
+- Default Configuration:
+  - Server Host: ```127.0.0.1```
+  - Server Port: ```65432```
+  - Both the server and client will be running simultaneously; however, ```serv.py``` must run first before ```cli.py```.
