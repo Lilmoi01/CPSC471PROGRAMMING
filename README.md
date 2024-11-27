@@ -17,19 +17,24 @@ support uploading and downloading of files to and from the server.
 
 ### How to execute project ### 
 1. Server Setup:
-   - Open serv.py on VSCode and run the file in a python-designated terminal.
-   - The terminal for serv.py should display:
+   - Open ```serv.py``` on VSCode and run the file in a python-designated terminal.
+     
+   - The terminal for ```serv.py``` should display:
      ``` Server listening on 127.0.0.1:65432 ```
+     
 2. Client Setup:
-   - Now that the server is running, open cli.py on VSCode and run the file in a python-designated terminal.
-   - The terminal for cli.py should display:
+   - Now that the server is running, open ```cli.py``` on VSCode and run the file in a python-designated terminal.
+     
+   - The terminal for ```cli.py``` should display:
      ``` Enter command (ls, get <file>, put <file>, quit): ```
+     
    - Use the following commands in client:
-     - ls: Lists all files on the server.
-     - get <file>: Download a file from server.
-     - put <file>: Upload a file to server.
-     - quit: Exits the client. 
+     - ```ls: ``` :Lists all files on the server.
+     - ```get <file>``` : Download a file from server.
+     - ```put <file>``` : Upload a file to server.
+     - ```quit``` : Exits the client. 
 
 ### Special Notes ###
 - Ensure the server and client directors are correctly set up:
-  - 
+  - ```serv.py``` and ```cli.py``` should be in the same folder.
+  - The server direc
