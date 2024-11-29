@@ -32,7 +32,6 @@ def handle_get(cli_socket, file_name):
         cli_socket.send("FileNotFound|0".encode('utf-8'))
 
 def handle_put(cli_socket, file_name, file_size):
-    """Process the `put` command."""
     if file_size == 0:
         print(f"Received a request to upload a nonexistent file '{file_name}'.")
         cli_socket.send("Error|File not found on client.".encode('utf-8'))
@@ -46,7 +45,11 @@ def handle_put(cli_socket, file_name, file_size):
             file.write(chunk)
             received_size += len(chunk)
             cli_socket.send("Acknowledge".encode('utf-8'))
+
     print(f"File '{file_name}' received successfully.")
+    # Wait for final acknowledgment from client
+    final_ack = cli_socket.recv(buffer_size).decode('utf-8')
+    print(f"Client acknowledgment: {final_ack}")
 
 def process_cmd(cli_socket, cmd, args):
     """Process a client command."""
@@ -55,10 +58,6 @@ def process_cmd(cli_socket, cmd, args):
     elif cmd == "get":
         file_name = args[0]
         handle_get(cli_socket, file_name)
-    elif cmd == "put":
-        file_name = args[0]
-        file_size = int(args[1])
-        handle_put(cli_socket, file_name, file_size)
     else:
         print(f"Unknown command: {cmd}")
 
