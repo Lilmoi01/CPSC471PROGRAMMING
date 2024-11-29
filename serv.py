@@ -33,6 +33,11 @@ def handle_get(cli_socket, file_name):
 
 def handle_put(cli_socket, file_name, file_size):
     """Process the `put` command."""
+    if file_size == 0:
+        print(f"Received a request to upload a nonexistent file '{file_name}'.")
+        cli_socket.send("Error|File not found on client.".encode('utf-8'))
+        return
+
     cli_socket.send("Ready".encode('utf-8'))
     with open(file_name, 'wb') as file:
         received_size = 0
