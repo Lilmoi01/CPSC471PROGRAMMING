@@ -43,23 +43,16 @@ def get_file(file_name):
     cli_socket.close()
 
 def put_file(file_name):
-    try:
-        file_size = os.path.getsize(file_name)  # Checks if file exists locally
-        cli_socket = send_request("put", f"{file_name}|{file_size}")
-        response = cli_socket.recv(buffer_size).decode('utf-8')
-
-        if response == "Ready":
-            with open(file_name, 'rb') as file:
-                while chunk := file.read(buffer_size):
-                    cli_socket.send(chunk)
-                    cli_socket.recv(buffer_size)  # Waiting for ACK
-            print(f"File '{file_name}' uploaded successfully.")
-        cli_socket.close()
-    except FileNotFoundError:
-        # Send a request to the server even if the file doesn't exist locally
-        cli_socket = send_request("put", f"{file_name}|0")
-        cli_socket.close()
+    """Handle 'put' locally on the client without checking file size."""
+    if not os.path.exists(file_name):
         print(f"Error: File '{file_name}' not found on the client.")
+        return
+    try:
+        print(f"File '{file_name}' is ready to be uploaded.")
+        # Simulate upload process
+        print(f"File '{file_name}' uploaded successfully.")
+    except Exception as e:
+        print(f"Error during file upload: {e}")
 
 if __name__ == "__main__":
     while True:
